@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Articles</title>
+
+    <style>
+        
+        body {
+            font-family: 'Times New Roman', Times, serif; 
+            background-color: #def3f7; 
+            color: #333; 
+            padding: 20px;
+        }
+
+        .article {
+            background-color: rgb(184, 228, 253); 
+            border: 1px solid #949494; 
+            border-radius: 5px; 
+            padding: 20px;
+            margin-bottom: 25px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+        }
+
+        .article h2 {
+            font-family: Arial, sans-serif; 
+            border-bottom: 1px solid #ccc; 
+            padding-bottom: 10px;
+            margin-top: 0;
+            color: black;
+        }
+
+        .article p {
+            line-height: 1.7; /
+            text-align: justify; 
+        }
+
+        .yellow-highlight {
+            background-color: #fffb8f;
+        }
+
+    
+        .green-highlight {
+            background-color: #d7ffe7; 
+            display: block; 
+            padding: 10px;
+        }
+
+   
+        .dotted-border-article {
+            background-color: #fffacd; 
+            border: 2px dashed #999; 
+        }
+        
+      
+        .orange-heading {
+            color: #d9534f; 
+            border: none; 
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <div class="article">
+        <h2>Page-level & inline CSS Styling</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia lorem eu porttitor luctus. Sed ac mauris vitae arcu consectetur tempor sed sed risus. Nunc posuere scelerisque dapibus. Vivamus posuere scelerisque dapibus. Nam ultricies laoreet augue id semper. Sed eu lacus ac dolor volutpat ullamcorper ac sed risus. Nunc pellentesque bibendum varius. Donec laoreet gravida massa maximus eleifend. Etiam eu maximus ipsum. Morbi ut venenatis mauris. Etiam vehicula nisl neque, fringilla pellentesque dui consequat eu.</p>
+        <p class="green-highlight">
+            Donec nec lacus et felis scelerisque iaculis a vitae nibh. Nullam in sapien condimentum erat interdum pretium eget sit amet ex. Duis sed enim nisl. Cras ut lacus vitae metus posuere vestibulum. Proin posuere tincidunt ipsum ut aliquam. Aenean iaculis nisl mauris, quis volutpat nulla blandit id. Nam placerat porta ornare. Nunc pretium elit et leo blandit, consectetur porttitor sapien porttitor. Aenean consectetur malesuada enim, eget fringilla dolor placerat porta ornare. Nunc pretium elit et leo blandit, consectetur porttitor sapien porttitor. Ut fermentum feugiat dolor.
+        </p>
+    </div>
+
+    <div class="article dotted-border-article">
+        <h2>Heading Num. 2</h2>
+        <p>Donec laoreet et elit sit amet egestas. Duis et lacus vitae metus posuere scelerisque. Vestibulum ornare nibh lectus, nec blandit justo efficitur in. Morbi at porta erat, <span class="yellow-highlight">quis</span> tristique lorem. Nunc mollis egestas ligula, id iaculis mauris dapibus sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    </div>
+
+    <div class="article">
+        <h2 class="orange-heading">Heading Num. 2</h2>
+        <p>Etiam in ex <span class="yellow-highlight">quis</span> eros hendrerit sollicitudin vitae iaculis neque. Vestibulum ornare nibh lectus, nec blandit justo efficitur in. Morbi at porta erat, <span class="yellow-highlight">quis</span> tristique lorem. Nunc mollis egestas ligula, id iaculis mauris dapibus sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+    </div>
+
+</body>
+</html>

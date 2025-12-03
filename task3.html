@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page-level & inline CSS Styling</title>
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            color: #333;
+            padding: 20px 40px;
+        }
+
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: Arial, sans-serif;
+            font-size: 1.5em;
+            font-weight: normal;
+            margin-top: 30px;
+        }
+        
+        p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .image-background-box {
+      
+            background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            position: relative; 
+            z-index: 1;
+        }
+
+        .image-background-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .image-background-box p {
+            position: relative;
+            color: rgb(231, 226, 226);
+            z-index: 3;
+        }
+
+        .blue-word { color: #82c0ff; } 
+        .red-word { color: #cc1f1f; }
+        .green-word { color: #66da57; }
+        .purple-word { color: #be8df5; }
+        .orange-word { color: #ffd18a; }
+    </style>
+
+</head>
+<body>
+
+
+    <h1>Page-level & inline CSS Styling</h1>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia lorem eu porttitor luctus. Sed ac mauris vitae arcu consectetur tempor sed sed risus. Nunc posuere scelerisque dapibus. Vivamus posuere scelerisque dapibus. Nam ultricies laoreet augue id semper. Sed eu lacus ac dolor volutpat ullamcorper ac sed risus. Nunc pellentesque bibendum varius. Donec laoreet gravida massa maximus eleifend. Etiam eu maximus ipsum. Morbi ut venenatis mauris. Etiam vehicula nisl neque, fringilla pellentesque dui consequat eu.</p>
+    
+    <h2>Inline CSS</h2>
+    
+    <p>Etiam in ex quis eros hendrerit sollicitudin vitae iaculis neque. Vestibulum ornare nibh lectus, nec blandit justo efficitur in. Morbi at porta erat, quis tristique lorem. Nunc mollis egestas ligula, id iaculis mauris dapibus sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus vestibulum non augue scelerisque tincidunt. Vivamus dictum luctus neque, eu scelerisque quam faucibus vitae.</p>
+    
+    <div class="image-background-box">
+        <p>
+            Donec nec lacus et felis <span class="blue-word">scelerisque</span> iaculis a vitae nibh. <span class="red-word">Nullam</span> in sapien condimentum erat interdum pretium eget sit amet ex. Duis sed enim nisl. Cras ut lacus vitae metus posuere vestibulum. Proin posuere tincidunt ipsum ut aliquam. Aenean iaculis nisl mauris, quis volutpat nulla blandit id. Nam <span class="green-word">placerat</span> porta ornare. Nunc pretium elit et leo blandit, consectetur porttitor sapien porttitor. Aenean consectetur malesuada enim, eget fringilla dolor placerat porta ornare. Nunc pretium elit et leo blandit, consectetur porttitor sapien porttitor. <span class="purple-word">Curabitur</span> ut pulvinar nulla. Sed mollis felis eget blandit venenatis. Pellentesque eu nisi <span class="orange-word">pharetra</span> felis aliquam scelerisque. Ut fermentum feugiat dolor.
+        </p>
+    </div>
+
+</body>
+</html>
