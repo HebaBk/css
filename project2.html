@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIN - Furniture Store</title>
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+   
+        :root {
+            --primary: #3b5d50;
+            --secondary: #eff2f1;
+            --yellow: #f9bf29;
+            --text-dark: #2f2f2f;
+            --text-grey: #6a6a6a;
+            --white: #ffffff;
+        }
+
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { color: var(--text-grey); font-size: 14px; line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, h4, h5, h6 { color: var(--text-dark); margin-top: 0; font-weight: 600; }
+        a { text-decoration: none; transition: 0.3s; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 30px; }
+
+     
+        .btn { display: inline-block; padding: 12px 30px; border-radius: 30px; font-weight: 600; border: none; cursor: pointer; }
+        .btn-yellow { background: var(--yellow); color: var(--text-dark); }
+        .btn-yellow:hover { background: #dcb326; }
+        .btn-white-outline { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: var(--white); margin-left: 10px; }
+        .btn-white-outline:hover { background: var(--white); color: var(--text-dark); border-color: var(--white); }
+        .btn-black { background: var(--text-dark); color: var(--white); }
+        .btn-black:hover { background: #444; }
+
+     
+        header { background: var(--primary); padding: 25px 0; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 32px; font-weight: 800; color: var(--yellow); letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: rgba(255,255,255,0.6); font-weight: 500; font-size: 14px; position: relative; }
+        .nav-links a.active, .nav-links a:hover { color: var(--white); }
+        .nav-links a.active::after { content: ""; position: absolute; bottom: -5px; left: 0; right: 0; height: 3px; background: var(--yellow); width: 100%; }
+        .nav-icons { display: flex; gap: 20px; }
+        .nav-icons img { width: 22px; filter: invert(1); cursor: pointer; }
+
+   
+        .hero { background: var(--primary); padding: 80px 0 100px; }
+        .hero .container { display: flex; justify-content: space-between; align-items: center; }
+        .hero-text { flex: 1; max-width: 450px; margin-right: 30px; z-index: 2; }
+        .hero-text h1 { color: var(--white); font-size: 50px; font-weight: 700; line-height: 1.2; margin-bottom: 30px; }
+        .hero-text p { color: rgba(255,255,255,0.5); margin-bottom: 35px; }
+        .hero-img { flex: 1.5; position: relative; z-index: 1; }
+        .hero-img::before { content: ""; position: absolute; right: -50px; top: 20%; width: 200px; height: 250px; background-image: radial-gradient(#63887a 20%, transparent 20%); background-size: 20px 20px; z-index: -1; }
+        .hero-img img { width: 100%; transform: scale(1.1); }
+
+        
+        .products { padding: 100px 0; background: var(--secondary); }
+        .products .container { display: flex; gap: 30px; }
+        .prod-intro { flex: 1; max-width: 25%; }
+        .prod-intro h2 { font-size: 34px; margin-bottom: 20px; }
+        .prod-intro p { margin-bottom: 30px; }
+        .prod-grid { flex: 3; display: flex; gap: 25px; }
+        .prod-item { flex: 1; text-align: center; position: relative; transition: 0.3s; cursor: pointer; }
+        .prod-item:hover { transform: translateY(-10px); }
+        .prod-item img { width: 100%; margin-bottom: 20px; border-radius: 10px; }
+        .prod-item strong { display: block; font-size: 18px; font-weight: 800; color: var(--text-dark); }
+        .prod-item::after { content: "+"; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 35px; height: 35px; background: var(--text-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s; font-size: 20px; }
+        .prod-item:hover::after { opacity: 1; bottom: 30px; }
+
+        .why-us { padding: 100px 0; }
+        .why-us .container { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+        .why-text { flex: 1; }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .feature-icon i { font-size: 24px; color: var(--text-dark); margin-bottom: 10px; }
+        .feature h4 { font-size: 14px; margin: 10px 0; font-weight: 600; }
+        .why-img { flex: 0.9; position: relative; padding-left: 50px; }
+        .why-img::before { content: ""; position: absolute; top: -30px; left: 0; width: 255px; height: 217px; background-image: radial-gradient(var(--yellow) 2px, transparent 2px); background-size: 20px 20px; z-index: -1; }
+        .why-img img { border-radius: 20px; width: 100%; }
+
+        .we-help { padding: 50px 0 100px; }
+        .we-help .container { display: flex; align-items: center; gap: 50px; }
+        .help-imgs-simple { flex: 1.4; display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
+        .help-imgs-simple img { width: 100%; border-radius: 20px; object-fit: cover; }
+        .help-imgs-simple .img1 { grid-column: 1; grid-row: 1 / span 2; height: 100%; }
+        .help-imgs-simple .img2 { grid-column: 2; grid-row: 1; height: 200px; align-self: end; }
+        .help-imgs-simple .img3 { grid-column: 2; grid-row: 2; height: 200px; }
+        .help-text { flex: 1; padding-left: 20px; }
+        .help-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .help-list li { position: relative; padding-left: 20px; }
+        .help-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border: 1px solid var(--text-dark); border-radius: 50%; }
+
+        .mini-products { padding: 80px 0; background: var(--secondary); }
+        .mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .mini-item { display: flex; gap: 20px; align-items: flex-start; }
+        .mini-img-wrap { flex: 0 0 100px; height: 100px; background: #dce5e4; border-radius: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .mini-img-wrap img { width: 80%; mix-blend-mode: multiply; }
+        .mini-content h3 { font-size: 16px; margin-bottom: 5px; color: var(--text-dark); }
+        .mini-content p { font-size: 13px; line-height: 1.5; margin-bottom: 10px; color: var(--text-grey); }
+        .mini-content a { font-size: 13px; color: var(--text-dark); font-weight: 600; }
+        .mini-content a:hover { text-decoration: underline; }
+
+        .testimonials { padding: 80px 0; text-align: center; }
+        .testimonials h2 { font-size: 32px; margin-bottom: 50px; color: var(--text-dark); }
+        
+        .testi-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .testi-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            max-width: 800px;
+        }
+
+        
+        .nav-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+        .nav-arrow.prev { background: #dce5e4; color: var(--text-dark); }
+        .nav-arrow.prev:hover { background: #c0c0c0; }
+        
+       
+        .nav-arrow.next { background: var(--yellow); color: var(--text-dark); }
+        .nav-arrow.next:hover { background: #dcb326; }
+
+        .testi-author img { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 15px; object-fit: cover; display: block; }
+        .testi-author h5 { font-size: 14px; font-weight: 700; margin-bottom: 5px; color: var(--text-dark); }
+        .testi-author span { font-size: 12px; color: var(--text-grey); display: block; margin-bottom: 20px; }
+
+        .testi-dots { display: flex; justify-content: center; gap: 8px; }
+        .dot { width: 8px; height: 8px; background-color: #d6d6d6; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background-color: var(--primary); }
+
+   
+        .blog { padding: 80px 0; background: #fff; }
+        .blog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .blog-header h2 { font-size: 34px; font-weight: 600; color: var(--text-dark); }
+        .blog-header a { font-weight: 600; text-decoration: underline; color: var(--text-dark); font-size: 14px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .blog-card img { width: 100%; height: 220px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; }
+        .blog-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); }
+        .blog-card span { font-size: 12px; color: var(--text-dark); }
+        .blog-card span b { font-weight: 600; }
+
+        .newsletter-section { padding: 80px 0 0; background: var(--white); }
+        .newsletter-wrapper { display: flex; align-items: center; justify-content: space-between; }
+        .newsletter-content { flex: 1; max-width: 50%; }
+        .newsletter-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .newsletter-header i { font-size: 24px; color: #999; }
+        .newsletter-form { display: flex; gap: 20px; }
+        .input-group { flex: 1; }
+        .input-group input { width: 100%; padding: 15px 20px; border-radius: 10px; border: 1px solid #ccc; outline: none; }
+        .btn-send { background: var(--primary); color: var(--white); width: 55px; height: 50px; border-radius: 10px; border: none; cursor: pointer; font-size: 18px; }
+        .newsletter-img { flex: 0.8; text-align: right; }
+        .newsletter-img img { width: 100%; max-width: 350px; margin-left: auto; transform: translateY(20px); }
+
+        footer { background: var(--white); padding: 80px 0 30px; }
+        .footer-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .brand-col h2 { font-size: 28px; color: var(--primary); margin-bottom: 25px; font-weight: 800; }
+        .social-icons { display: flex; gap: 10px; margin-top: 20px; }
+        .social-icons a { width: 40px; height: 40px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-dark); transition: 0.3s; }
+        .social-icons a:hover { background: var(--primary); color: var(--white); }
+        .links-col h4 { font-size: 14px; margin-bottom: 20px; color: var(--text-dark); }
+        .links-col ul li { margin-bottom: 12px; }
+        .links-col ul li a:hover { color: var(--primary); }
+        .copyright { text-align: right; border-top: 1px solid #eee; padding-top: 30px; font-size: 14px; }
+        @media (max-width: 992px) {
+            .hero .container, .products .container, .why-us .container, .we-help .container, .newsletter-wrapper { flex-direction: column; text-align: center; }
+            .hero-text { margin: 0 auto; margin-bottom: 40px; margin-right: 0; }
+            .hero-img, .why-img, .newsletter-img { width: 100%; margin-top: 30px; text-align: center; }
+            .newsletter-img img { margin: 0 auto; }
+            .prod-grid, .mini-grid, .blog-grid, .footer-cols { grid-template-columns: 1fr 1fr; }
+            .prod-intro, .newsletter-content { max-width: 100%; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-header { justify-content: center; }
+            .nav-links, .nav-arrow { display: none; }
+            .why-us .container { flex-direction: column-reverse; }
+            .testi-row { flex-direction: column; gap: 20px; }
+        }
+        @media (max-width: 425px) {
+            .prod-grid, .mini-grid, .blog-grid, .footer-cols { grid-template-columns: 1fr; }
+            .footer-cols { text-align: center; }
+            .social-icons { justify-content: center; }
+            .btn { width: 100%; margin-left: 0 !important; margin-bottom: 10px; }
+            .hero-text h1 { font-size: 34px; }
+            .copyright { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">FIN</a>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <img src="https://themewagon.github.io/furni/images/user.svg" alt="user">
+                    <img src="https://themewagon.github.io/furni/images/cart.svg" alt="cart">
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>"Transform your space with elegance."</h1>
+                <p>Donec mattis porta eros, aliquet finibus risus interdum at. Nulla viverra as it was for us to know what was to be done.</p>
+                <a href="#" class="btn btn-yellow">Shop Now</a>
+                <a href="#" class="btn btn-white-outline">Explore</a>
+            </div>
+            <div class="hero-img">
+                <img src="https://themewagon.github.io/furni/images/couch.png" alt="Couch">
+            </div>
+        </div>
+    </section>
+    <section class="products">
+        <div class="container">
+            <div class="prod-intro">
+                <h2>Crafted with excellent material.</h2>
+                <p>Donec mattis porta eros, aliquet finibus risus interdum at. Nulla viverra as it was.</p>
+                <a href="#" class="btn btn-black">Explore</a>
+            </div>
+            <div class="prod-grid">
+                <div class="prod-item">
+                    <img src="https://themewagon.github.io/furni/images/product-1.png" alt="Chair">
+                    <h3>Modern Chair</h3>
+                    <strong>$60.00</strong>
+                </div>
+                <div class="prod-item">
+                    <img src="https://themewagon.github.io/furni/images/product-2.png" alt="Chair">
+                    <h3>Kruzo Aero Chair</h3>
+                    <strong>$78.00</strong>
+                </div>
+                <div class="prod-item">
+                    <img src="https://themewagon.github.io/furni/images/product-3.png" alt="Chair">
+                    <h3>Ergonomic Chair</h3>
+                    <strong>$88.00</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="why-us">
+        <div class="container">
+            <div class="why-text">
+                <h2>Why Choose Us</h2>
+                <p>Donec mattis porta eros, aliquet finibus risus interdum at. Nulla viverra as it was for us to know what was to be done. the</p>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon"><i class="fa-solid fa-truck"></i></div>
+                        <h4>Fast & Free Shipping</h4>
+                        <p>Donec mattis porta eros, aliquet finibus.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <h4>Easy to Shop</h4>
+                        <p>Donec mattis porta eros, aliquet finibus.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                        <h4>24/7 Support</h4>
+                        <p>Donec mattis porta eros, aliquet finibus.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                        <h4>Hassle Free Returns</h4>
+                        <p>Donec mattis porta eros, aliquet finibus.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="why-img">
+                <img src="https://themewagon.github.io/furni/images/why-choose-us-img.jpg" alt="Why Choose Us">
+            </div>
+        </div>
+    </section>
+    <section class="we-help">
+        <div class="container">
+            <div class="help-imgs-simple">
+                <img class="img1" src="https://themewagon.github.io/furni/images/img-grid-1.jpg" alt="Room">
+                <img class="img2" src="https://themewagon.github.io/furni/images/img-grid-2.jpg" alt="Sofa Detail">
+                <img class="img3" src="https://themewagon.github.io/furni/images/img-grid-3.jpg" alt="Stool">
+            </div>
+            <div class="help-text">
+                <h2>We help you make Modern Interior Design</h2>
+                <p>Donec mattis porta eros, aliquet finibus risus interdum at. Nulla viverra as it was for us to know what was to be done. the this is a long post for the text. This small text has to be place here, since this is</p>
+                <ul class="help-list">
+                    <li>Donec mattis porta eros, aliquet finibus risus</li>
+                    <li>Donec mattis porta eros, aliquet finibus risus</li>
+                    <li>Donec mattis porta eros, aliquet finibus risus</li>
+                    <li>Donec mattis porta eros, aliquet finibus risus</li>
+                </ul>
+                <a href="#" class="btn btn-black">Explore</a>
+            </div>
+        </div>
+    </section>
+    <section class="mini-products">
+        <div class="container">
+            <div class="mini-grid">
+                <div class="mini-item">
+                    <div class="mini-img-wrap">
+                        <img src="https://themewagon.github.io/furni/images/product-1.png" alt="Chair">
+                    </div>
+                    <div class="mini-content">
+                        <h3>Modern Chair</h3>
+                        <p>Donec mattis porta eros, aliquet finibus risus in. Donecd</p>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+                <div class="mini-item">
+                    <div class="mini-img-wrap">
+                        <img src="https://themewagon.github.io/furni/images/product-2.png" alt="Chair">
+                    </div>
+                    <div class="mini-content">
+                        <h3>Kruzi Aero</h3>
+                        <p>Donec mattis porta eros, aliquet finibus risus in. Donecd</p>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+                <div class="mini-item">
+                    <div class="mini-img-wrap">
+                        <img src="https://themewagon.github.io/furni/images/product-3.png" alt="Chair">
+                    </div>
+                    <div class="mini-content">
+                        <h3>Ergonomic Chair</h3>
+                        <p>Donec mattis porta eros, aliquet finibus risus in. Donecd</p>
+                        <a href="#">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <div class="container">
+            <h2>Testimonials</h2>
+            <div class="testi-row">
+                <div class="nav-arrow prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+
+                <div class="testi-text">
+                    "Donec nibh magna, interdum quis massa sed, rhoncus laoreet quam. Mauris accumsan felis fermentum euismod egestas. Mauris ante augue, cursus sit amet arcu a, maximus suscipit nibh. Integer vel nibh tellus. Pellentesque in risus non dui venenatis sollicitudin sed vitae diam. Fusce tincidunt nisl mi, at molestie odio accumsan non. Pellentesque ma"
+                </div>
+                <div class="nav-arrow next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="testi-author">
+                <img src="./photos/INDIAN.jpg" alt="Zain Bin Noor">
+                <h5>Zain Bin Noor</h5>
+                <span>CEO, Co-Founder, XYZ Inc.</span>
+                
+                <div class="testi-dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Blog -->
+    <section class="blog">
+        <div class="container">
+            <div class="blog-header">
+                <h2>Recently Blog</h2>
+                <a href="#">View All Posts</a>
+            </div>
+            <div class="blog-grid">
+                <!-- Blog 1 -->
+                <div class="blog-card">
+                    <img src="https://themewagon.github.io/furni/images/post-1.jpg" alt="Blog 1">
+                    <h4>First Time Home Owner Ideas</h4>
+                    <span>by <b>Nana Ama</b> on Nov 18th, 2022</span>
+                </div>
+                <!-- Blog 2 -->
+                <div class="blog-card">
+                    <img src="https://themewagon.github.io/furni/images/post-2.jpg" alt="Blog 2">
+                    <h4>First Time Home Owner Ideas</h4>
+                    <span>by <b>Nana Ama</b> on Nov 18th, 2022</span>
+                </div>
+                <!-- Blog 3 -->
+                <div class="blog-card">
+                    <img src="https://themewagon.github.io/furni/images/post-3.jpg" alt="Blog 3">
+                    <h4>First Time Home Owner Ideas</h4>
+                    <span>by <b>Nana Ama</b> on Nov 18th, 2022</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-wrapper">
+                <div class="newsletter-content">
+                    <div class="newsletter-header">
+                        <i class="fa-regular fa-envelope"></i>
+                        <h3>Subscribe to Newsletter</h3>
+                    </div>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="text" placeholder="Enter your name">
+                        </div>
+                        <div class="input-group">
+                            <input type="email" placeholder="Enter your e-mail">
+                        </div>
+                        <button class="btn-send">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="newsletter-img">
+                    <img src="https://themewagon.github.io/furni/images/sofa.png" alt="Green Chair">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-cols">
+                <div class="brand-col">
+                    <h2>FIN</h2>
+                    <p>Donec mattis porta eros, aliquet finibus risus interdum at. Nulla viverra as it was for us to know what was to be done. the this is a long post for the text.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="links-col">
+                    <h4>About us</h4>
+                    <ul>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+
+                <div class="links-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Knowledge base</a></li>
+                        <li><a href="#">Live chat</a></li>
+                    </ul>
+                </div>
+
+                <div class="links-col">
+                    <h4>Jobs</h4>
+                    <ul>
+                        <li><a href="#">Our team</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="links-col">
+                    <h4>Nordic Chair</h4>
+                    <ul>
+                        <li><a href="#">Kruzo Aero</a></li>
+                        <li><a href="#">Ergonomic</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>Copyright 2022 zainali00769@gmail.com. All Rights Reserved.</p>
+                <div style="float: right; margin-top: -30px;">
+                    <a href="#" style="margin-right: 15px;">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
