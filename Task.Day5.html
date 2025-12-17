@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5 - Web Storage</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+        .container { 
+            border: 2px solid #ccc; 
+            padding: 20px; 
+            margin: 20px auto; 
+            width: 300px; 
+            border-radius: 10px;
+        }
+        input { padding: 10px; width: 80%; margin-bottom: 10px; }
+        button { padding: 10px 20px; cursor: pointer; color: white; border: none; border-radius: 5px; }
+        .btn-save { background-color: rgb(10, 58, 10); }
+        .btn-delete { background-color: rgb(8, 51, 168); }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="background-color: #f0f8ff;">
+        <h3>1. Local Storage</h3>
+        <p>(Persists after closing browser)</p>
+        <input type="text" id="localInput" placeholder="Type here...">
+        <br>
+        <button class="btn-save" onclick="saveLocal()">Save</button>
+        <button class="btn-delete" onclick="deleteLocal()">Delete</button>
+    </div>
+
+    <div class="container" style="background-color: #fff0f5;">
+        <h3>2. Session Storage</h3>
+        <p>(Clears when closing tab)</p>
+        <input type="text" id="sessionInput" placeholder="Type here...">
+        <br>
+        <button class="btn-save" onclick="saveSession()">Save</button>
+        <button class="btn-delete" onclick="deleteSession()">Delete</button>
+    </div>
+
+    <script>
+       
+            let text = document.getElementById("localInput").value;
+            localStorage.setItem("myLocalData", text);
+            alert("Saved to LocalStorage! ✅");
+        }
+
+        function deleteLocal() {
+            localStorage.removeItem("myLocalData");
+            document.getElementById("localInput").value = ""; 
+            alert("Deleted from LocalStorage! ❌");
+        }=
+
+        function saveSession() {
+            let text = document.getElementById("sessionInput").value;
+            sessionStorage.setItem("mySessionData", text); 
+            alert("Saved to SessionStorage! ✅");
+        }
+
+        function deleteSession() {
+            sessionStorage.removeItem("mySessionData");
+            document.getElementById("sessionInput").value = ""; 
+            alert("Deleted from SessionStorage! ❌");
+        }
+        window.onload = function() {
+    
+            if(localStorage.getItem("myLocalData")) {
+                document.getElementById("localInput").value = localStorage.getItem("myLocalData");
+            }
+
+   
+            if(sessionStorage.getItem("mySessionData")) {
+                document.getElementById("sessionInput").value = sessionStorage.getItem("mySessionData");
+            }
+        }
+    </script>
+
+</body>
+</html>
