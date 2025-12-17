@@ -1,0 +1,216 @@
+using System;
+
+namespace AllTasksProject
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // --- تشغيل التاسك الأول (الأساسيات والمصفوفات) ---
+            Console.WriteLine("============= TASK 1: BASICS =============");
+            RunBasicsTask();
+
+            // --- تشغيل التاسك الثاني (الأرقام واللوب) ---
+            Console.WriteLine("\n============= TASK 2: NUMBERS LOOP =============");
+            RunNumbersTask();
+
+            // --- تشغيل التاسك الثالث (العلامات) ---
+            Console.WriteLine("\n============= TASK 3: GRADES =============");
+            RunGradesTask();
+
+            // --- تشغيل التاسك الرابع (الآلة الحاسبة) ---
+            Console.WriteLine("\n============= TASK 4: CALCULATOR =============");
+            RunCalculatorTask();
+
+            // منع إغلاق الشاشة فوراً
+            Console.WriteLine("\nAll tasks finished. Press any key to exit...");
+            Console.ReadKey();
+        }
+
+        // ---------------------------------------------------------
+        // دالة حل الجزء الأول (الأساسيات والمصفوفات)
+        // ---------------------------------------------------------
+        static void RunBasicsTask()
+        {
+            // 1. Read and print string
+            Console.Write("1. Please enter a string: ");
+            string input = Console.ReadLine();
+            Console.WriteLine("You entered: " + input);
+            Console.WriteLine("----------------");
+
+            // 2. Variable Types
+            double myDouble = 10.99;
+            string myString = "Hello C#";
+            char myChar = 'A';
+            bool myBool = true;
+            int myInt = 100;
+            const double PI = 3.14159;
+
+            Console.WriteLine("2. Variable Types:");
+            Console.WriteLine($"Double: {myDouble}, String: {myString}, Char: {myChar}, Bool: {myBool}, Int: {myInt}, Const: {PI}");
+            Console.WriteLine("----------------");
+
+            // 3. Cars Array
+            string[] cars = { "BMW", "Ford", "Toyota", "Tesla" };
+            Console.WriteLine("3. All cars:");
+            foreach (string car in cars)
+            {
+                Console.WriteLine(car);
+            }
+            Console.WriteLine("Array Length: " + cars.Length);
+            Console.WriteLine("----------------");
+
+            // 4. Name and Year
+            Console.Write("4. Input your first name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Input your last name: ");
+            string lastName = Console.ReadLine();
+            Console.Write("Input your year of birth: ");
+            string yearOfBirth = Console.ReadLine();
+            Console.WriteLine($"Output: {firstName} {lastName} {yearOfBirth}");
+            Console.WriteLine("----------------");
+
+            // 5. Store elements in array
+            int[] numbers = new int[10];
+            Console.WriteLine("5. Input 10 elements in the array:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write($"element - {i} : ");
+                numbers[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.Write("Elements in array are: ");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write(numbers[i] + " ");
+            }
+            Console.WriteLine();
+        }
+
+        // ---------------------------------------------------------
+        // دالة حل الجزء الثاني (الأرقام الزوجية والفردية)
+        // ---------------------------------------------------------
+        static void RunNumbersTask()
+        {
+            Console.WriteLine("Enter 10 numbers (Negative will skip, 0 will stop):");
+
+            int evenCount = 0;
+            int oddCount = 0;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.Write($"Enter number {i}: ");
+                int num = Convert.ToInt32(Console.ReadLine());
+
+                // Stop if 0
+                if (num == 0)
+                {
+                    Console.WriteLine("Zero entered. Stopping loop.");
+                    break;
+                }
+
+                // Skip if negative
+                if (num < 0)
+                {
+                    Console.WriteLine("Negative number skipped.");
+                    continue;
+                }
+
+                // Count Even/Odd
+                if (num % 2 == 0)
+                    evenCount++;
+                else
+                    oddCount++;
+            }
+
+            Console.WriteLine($"Total Even Numbers: {evenCount}");
+            Console.WriteLine($"Total Odd Numbers: {oddCount}");
+        }
+
+        // ---------------------------------------------------------
+        // دالة حل الجزء الثالث (العلامات)
+        // ---------------------------------------------------------
+        static void RunGradesTask()
+        {
+            int grade;
+            while (true)
+            {
+                Console.Write("Enter student's grade (0-100): ");
+                grade = Convert.ToInt32(Console.ReadLine());
+
+                if (grade >= 0 && grade <= 100)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid grade! Please try again.");
+                }
+            }
+
+            char letter;
+            if (grade >= 90) letter = 'A';
+            else if (grade >= 80) letter = 'B';
+            else if (grade >= 70) letter = 'C';
+            else if (grade >= 60) letter = 'D';
+            else letter = 'F';
+
+            Console.WriteLine($"The grade is: {letter}");
+        }
+
+        // ---------------------------------------------------------
+        // دالة حل الجزء الرابع (الآلة الحاسبة)
+        // ---------------------------------------------------------
+        static void RunCalculatorTask()
+        {
+            while (true)
+            {
+                Console.WriteLine("\nChoose an operation (+, -, *, /):");
+                // قراءة الحرف بدون الحاجة للضغط على انتر
+                char operation = Console.ReadKey().KeyChar;
+                Console.WriteLine(); 
+
+                Console.Write("Enter first number: ");
+                double num1 = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Enter second number: ");
+                double num2 = Convert.ToDouble(Console.ReadLine());
+
+                double result = 0;
+                bool validOperation = true;
+
+                switch (operation)
+                {
+                    case '+': result = num1 + num2; break;
+                    case '-': result = num1 - num2; break;
+                    case '*': result = num1 * num2; break;
+                    case '/':
+                        if (num2 != 0) result = num1 / num2;
+                        else
+                        {
+                            Console.WriteLine("Error: Cannot divide by zero.");
+                            validOperation = false;
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid operation.");
+                        validOperation = false;
+                        break;
+                }
+
+                if (validOperation)
+                {
+                    Console.WriteLine($"Result: {result}");
+                }
+
+                Console.Write("Do you want to continue? (y/n): ");
+                char choice = Console.ReadKey().KeyChar;
+                
+                if (choice == 'n' || choice == 'N')
+                {
+                    break;
+                }
+                Console.WriteLine(); // سطر جديد للترتيب
+            }
+        }
+    }
+}
